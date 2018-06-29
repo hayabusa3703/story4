@@ -1,0 +1,82 @@
+<%= render 'application/titlebar'%>
+<div class="container">
+  <%= render 'application/toolbar'%>
+  <div class="main">
+    <div can_delivery_other="true" data-is="story-id-top" is_me="true">
+      <div class="pankuzu">
+        <div class="container">
+          <a class="to-top" href="/">トップページ</a>    <!-- まだ実装中の機能であるのでaタグのままにしています-->
+          <span>></span>
+          <a class="category" href="">カテゴリ名</a>     <!-- まだ実装中の機能であるのでaタグのままにしています-->
+        </div>
+      </div>
+      <div class="global-box">
+        <div class="container">
+          <div class="wall">
+            <% @storys.each do |story| %>
+              <%= link_to '削除', story_path(story), method: :delete, class: 'story__delete' %>
+              <%= link_to '編集', edit_story_path(story), class: 'story__edit' %>
+          </div>
+          <a class="read" href="/">       <!-- まだ実装中の機能であるのでaタグのままにしています-->
+            <div class="inner">
+              <i class="fa fa-arrow-right"></i>
+              続きを読む
+            </div>
+          </a>
+          <div class="body">
+            <p class="reading_time">1 min read</p>
+            <a class="linked" href="/story/story_id">       <!-- まだ実装中の機能であるのでaタグのままにしています-->
+              <h2 class="title" data-is="print" labal=""><%= story.title %></h2>
+              <div class="discription" style="padding: 0; margin-top: 10px; height: 40px; font-size: 14px; color: #807975;">
+                <%= story.text %>
+              </div>
+            <% end %>
+            </a>
+            <div class="tags">
+              <div class="announce">
+                <i class="fa fa-plus"></i>
+                <span>読者の方もタグを追加できるな機能を実装中です！</span>
+              </div>
+            </div>
+            <div class="next_prev_stories clearfix">
+              <div class="prev">
+                <span>
+                  <i class="fa fa-arrow-left"></i>
+                  前編へ
+                </span>
+              </div>
+              <div class="next"></div>
+              <div class="next">
+                <a href="/">             <!-- まだ実装中の機能であるのでaタグのままにしています-->
+                  続編を書く
+                  <i class="fa fa-arrow-pencil"></i>
+                </a>
+              </div>
+            </div>
+            <%= render '/storys/social'%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contents">
+      <div class="contents-container clearfix">
+        <div class="layout-column-main">
+          <div class="story-add-engagement">
+            <h3 class="h3-global">みんなの読んで良かった！</h3>
+            <div data-is="story-id-bookmark-form" >
+              <div class = "inner" >
+               <div class="icon"></div>
+               <textarea>読んで良かったにコメントを添える...</textarea>
+               <%= render partial: 'storys', collection: @storys, as: :story %>
+              </div>
+                <i class = "fa fa-star"> </i>
+           </div>
+          </div>
+        </div>
+        <div class="layout-column-right"></div>
+        <%= render 'layouts/recommend'%>
+      </div>
+    </div>
+    <%= render 'application/footer' %>
+  </div>
+</div>

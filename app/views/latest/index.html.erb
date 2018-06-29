@@ -1,0 +1,22 @@
+<%= render 'application/titlebar' %>
+<div class="container-latest">
+  <%= render 'application/toolbar' %>
+  <div class="main">
+    <div class="contents">
+      <div class="contents-container clearfix">
+        <div class="layout-column-main">
+          <h1 class="h1-global">
+            <i class="fa fa-flash"></i>
+            新着のストーリー</h1>
+          <div class="story-list clearfix">
+            <%= render partial: "latest/story-box", collection: @storys, as:"story" %>
+          </div>
+          <div data-is="category__paginate"><%= paginate(@storys) %></div>
+          <%= render 'layouts/recommend' %>
+        </div>
+        <%= render 'latest/rightside' %>
+      </div>
+    </div>
+    <%= render 'application/footer' %>
+  </div>
+</div>

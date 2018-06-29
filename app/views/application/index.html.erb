@@ -1,0 +1,47 @@
+<%= render 'application/titlebar' %>
+<div class="container">
+  <%= render 'application/toolbar' %>
+  <div class="main">
+    <div data-is="page-index">
+      <a class="katarie-image" href="">     <!-- まだ未完成の機能なのでaタグのままにしています-->
+        <%= image_tag "https://storys.jp/images/tieup/katarie/yoshimoto_logo.png", class: "yoshimoto-logo" %>
+        <%= image_tag "https://storys.jp/images/tieup/katarie/katarie2_big_bnr_logo.png", class: "katarie-logo" %>
+        <%= image_tag "https://storys.jp/images/layouts/logo-white.png", class: "storys-logo" %>
+        <p>大賞発表</p>
+      </a>
+    </div>
+    <!-- 仮置きです -->
+    <div data-is="write-field">
+      <div class="write-field-container">
+        <div class="write-field-wrapper">
+          <div class="text">あなたのストーリーを教えてください</div>
+          <div class="form">
+            <form>
+              <input class="post-input" type="text" name="title" placeholder="タイトルを入力...">
+              <button name="button" type="submit">
+                <i class="fa fa-pencil"></i>
+                送信
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contents">
+      <div class="contents-container clearfix">
+        <div class="layout-column-main">
+          <div class="story-list clearfix">
+            <%= render partial: "application/story-box", collection: @storys, as:"story" %>
+          </div>
+        </div>
+        <div class="layout-column-right">
+          <div class="ad">広告
+          </div>
+          <%= render 'application/ranking' %>
+        </div>
+      </div>
+      <%= render 'application/category' %>
+    </div>
+    <%= render 'application/footer' %>
+  </div>
+</div>
